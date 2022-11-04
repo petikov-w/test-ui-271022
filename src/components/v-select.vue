@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {ref} from "vue";
+import {ref,computed} from "vue";
 
 export default {
   name: "v-select",
@@ -26,8 +26,9 @@ export default {
       const listVisible=ref(false);
       const options = props.options;
       const selected = props.selected;
+      console.log("---------000---------->>> ",props.selected);
       const handleListOptionsVisible= () => { listVisible.value ? listVisible.value=false : listVisible.value=true }
-      const handleSelectOptions = (option) => {emit('select',option), listVisible.value=false};
+      const handleSelectOptions = (option) => {emit('select',option); listVisible.value=false};
       return { options, selected, listVisible, handleListOptionsVisible, handleSelectOptions}
   }
 }
