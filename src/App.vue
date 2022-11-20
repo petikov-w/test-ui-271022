@@ -1,5 +1,5 @@
 <template lang="pug">
-Slider(:list-items='listDocuments')
+Slider(:list-items='listGefest')
 </template>
 
 <script>
@@ -14,8 +14,9 @@ export default {
     const store = useStore();
     const listOptions = computed(() => store.getters.getListOptions);
     const listDocuments = computed(() => store.getters.getListDocuments)
+    const listGefest = computed(() => store.getters.getListGefest)
 
-    return {listOptions, listDocuments}
+    return {listOptions, listDocuments, listGefest}
 
   }
 }

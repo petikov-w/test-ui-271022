@@ -12,7 +12,12 @@ swiper(
   .swiper-button-next(ref="next")
 
   swiper-slide(v-for="(item, index) in listItems" :key="item.index")
-    img(:src="item")
+   section-main(style="display:flex; flex-direction:column;")
+    section-top(style="display:flex; align-items:center;")
+      img(:src="item.image_a" width="40" height="40" )
+      p(v-html="item.text_tab" style="margin-left:20px;")
+    img(:src="item.image_main" width="310")
+
 
 </template>
 
