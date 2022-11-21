@@ -12,11 +12,19 @@ swiper(
   .swiper-button-next(ref="next")
 
   swiper-slide(v-for="(item, index) in listItems" :key="item.index")
-   section-main(style="display:flex; flex-direction:column;")
-    section-top(style="display:flex; align-items:center;")
-      img(:src="item.image_a" width="40" height="40" )
-      p(v-html="item.text_tab" style="margin-left:20px;")
-    img(:src="item.image_main" width="310")
+   section-main
+      section-top
+        img(:src="item.image_a")
+        p(v-html="item.text_tab")
+      section-image
+        img(:src="item.image_main")
+      section-list
+        .list(v-for="item in item.content_side" :key="index")
+         ul(v-if="item.text_visible") {{ item.text }}
+           li(v-for="item in item.list_side" :key="index") {{ item }}
+         ul(v-else)
+          li(v-for="item in item.list_side" :key="index") {{ item }}
+      section-button
 
 
 </template>
@@ -67,5 +75,53 @@ export default {
   --swiper-navigation-size: 24px;
   color: dimgrey;
   font-size: 16px;
+}
+
+section-main {
+  border: 2px solid #AEB6BB;
+  min-width: 77vw;
+  section-top {
+    display: flex;
+    min-width: 77vw;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 2px solid #AEB6BB;
+    img {
+      width: 24px;
+      margin-left: 15px;
+    }
+    p {
+      font-family: sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      margin-left: 20px;
+    }
+  }
+  section-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 220px;
+    }
+  }
+  section-list {
+    .list {
+      ul {
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+      }
+      li {
+        font-family: sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        margin-left: 25px;
+      }
+    }
+  }
 }
 </style>
