@@ -8,8 +8,9 @@ swiper(
   :pagination="false"
   :loop="false"
   )
-  .swiper-button-prev(ref="prev")
-  .swiper-button-next(ref="next")
+
+  .swiper-button-prev.swiper-custom-nav(ref="prev")
+  .swiper-button-next.swiper-custom-nav(ref="next")
 
   swiper-slide(v-for="(item, index) in listItems" :key="item.index")
    section-main
@@ -25,7 +26,7 @@ swiper(
          ul(v-else)
           li(v-for="item in item.list_side" :key="index") {{ item }}
       section-button
-
+        button.btn Узнать стоимость
 
 </template>
 
@@ -77,6 +78,11 @@ export default {
   font-size: 16px;
 }
 
+.swiper-custom-nav {
+  position: fixed;
+  top: 40px;
+}
+
 section-main {
   border: 2px solid #AEB6BB;
   min-width: 77vw;
@@ -122,6 +128,21 @@ section-main {
         margin-left: 25px;
       }
     }
+  }
+}
+section-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .btn {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #ffffff;
+    background-color: #2D72CD;
+    border: none;
+    padding: 12px 50px;
+    margin-bottom: 20px;
   }
 }
 </style>
